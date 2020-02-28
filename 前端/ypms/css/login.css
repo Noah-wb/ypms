@@ -1,0 +1,74 @@
+			.middle{
+				width: 930px;
+				height: 350px;
+				/*border: 1px red solid;*/
+				padding-top: 50px;
+			}
+			
+			.middle_center{
+				width: 560px;
+				height: 250px;
+				border: 1px #ab6444 solid;
+				border-radius: calc(10px);
+				margin: 0 auto;
+				background-color: #faebd6;
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-top: 50px;
+				
+			}
+			.middle_center_left{
+				float: left;
+				width: 230px;
+				height: 130px;
+				border: 1px #ab6444 solid;
+				border-radius: calc(10px);
+				background-color: #f5f5dd;
+				padding-top: 20px;
+				padding-left: 20px;
+				font-size: 12px;
+			}
+			.middle_center_right{
+				float: right;
+				width: 280px;
+				height: 135px;
+				border: 1px #ab6444 solid;
+				border-radius: calc(10px);
+				background-color: #f5f5dd;
+				padding-left: 20px;
+				padding-top: 15px;
+				font-size: 14px;
+			}
+			.middle_center_left_pwd{
+				margin-top: 20px;
+			}
+			.middle_center_left input{
+				background-color: #fff7c6;
+			}
+			.middle_center_left_left{
+				float: left;
+			}
+			.middle_center_left_right{
+				float: right;
+			}
+			.middle_center_left_btn{
+				padding-left: 50px;
+				padding-right: 70px;
+				padding-top: 40px;
+			}
+			.middle_center_right ul li{
+				list-style-image: url(../img/cateitems.gif);
+				margin-top: 10px;
+			}
+			.login_register{
+				color: #d7644f;
+			}
+			.login_register:hover{
+				color: orange;
+			}
+			.login_rest_pwd{
+				color: #00ab26;
+			}
+			.login_rest_pwd:hover{
+				color: orange;
+			}

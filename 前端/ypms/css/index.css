@@ -1,0 +1,138 @@
+			/*中部*/
+			.middle{
+				padding-top: 10px;
+				padding-left: 5px;
+				padding-right: 5px;
+			}
+			.middle_left{
+				width: 600px;
+				height: 535px;
+				border: 1px #ffa500 solid;
+				border-radius: calc(10px);/*设置div边框圆角显示*/
+				float: left;
+				padding: 5px;
+			}
+			
+			.middle_right{
+				width: 300px;
+				height: 535px;
+				/*border: 1px #ffa500 solid;*/
+				float: right;
+				
+			}
+
+			/*中部菜品详情部分*/
+			.middle_left_content{
+				width: 290px;
+				height: 170px;
+				float: left;
+				margin-top: 5px;
+				margin-left: 8px;
+			}
+			
+			.middle_left_content_up_left{
+				float: left;
+			}
+			.middle_left_content_up_right{
+				width: 140px;
+				height: 135px;
+				float: right;
+			}
+			
+			.content_tittle{
+				font-size: 14px;
+			}
+			
+			.middle_left_content_bottom{
+				padding-top: 6px;
+				width: 290px;
+				line-height: 28px;
+				text-align: center;
+			}
+			
+			.middle_left_content_up_left img{
+				width: 140px;
+				height: 135px;
+			}
+			
+			/* 右*/
+			
+			/*餐厅公告*/
+			.middle_right_one_up{
+				background-image: url(../img/notice.jpg);
+				background-repeat: no-repeat;
+				width: 248px;
+				height: 37px;
+				padding-left: 50px;
+				padding-top: 8px;
+			}
+			.middle_right_one{
+				width: 300px;
+				border: 1px orange solid;
+				border-radius: calc(10px);
+			}
+			.middle_right_one_up h3{
+				display: inline-block;
+			}
+			
+			.middle_right_one_bottom ul li{
+				list-style-image:url(../img/43.gif) ;
+			}
+			.middle_right_one_bottom a{
+				text-decoration: none;
+				font-size: 13px;
+				color: black;
+			}
+			.middle_right_one_bottom a:hover{
+				color: orange;
+			}
+			.middle_right_one_bottom{
+				padding-left: 20px;
+			}
+			
+			/*中*/
+			.middle_right_two{
+				width: 300px;
+				border: 1px orange solid;
+				border-radius: calc(10px);
+				margin-top: 10px;
+			}
+			.middle_right_two_up h3{
+				display: inline-block;
+			}
+			.middle_right_two_up{
+				background-image: url(../img/mycar.jpg);
+				background-repeat: no-repeat;
+				width: 248px;
+				height: 37px;
+				padding-left: 50px;
+				padding-top: 8px;
+			}
+			
+			/*下*/
+			.middle_right_three{
+				width: 300px;
+				border: 1px orange solid;
+				border-radius: calc(10px);
+				margin-top: 10px;
+			}
+			
+			.middle_right_three_up h3{
+				display: inline-block;
+			}
+			.middle_right_three_up{
+				background-image: url(../img/phb.jpg);
+				background-repeat: no-repeat;
+				width: 248px;
+				height: 37px;
+				padding-left: 50px;
+				padding-top: 8px;
+			}
+			
+			.middle_right_three_bottom ul li{
+				list-style-image: url(../img/43.gif);
+				font-size: 14px;
+			}
+			.middle_right_three_bottom{
+				padding-left: 20px;
+			}

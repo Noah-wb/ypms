@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/all.css" />
+		<link rel="stylesheet" href="css/public_top.css" />
+		<link rel="stylesheet" href="css/public_bottom.css" />
+		<link rel="stylesheet" href="css/register.css" />
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+	</head>
+	<body>
+		<div class="parent">
+			<!--顶部-->
+			<div class="top">
+				<!--顶部第一行-->
+				<div class="top_up">
+					<div class="top_up_right">
+						<ul>
+							<li id="id_login_btn"><a href="login.html">会员登录</a></li>
+							<li id="id_register_btn"><a href="register.html">会员注册</a></li>
+							<li id="id_loginout_btn"><a id="loginOut"  href="javascript:void(0)">注销登录</a></li>
+							<li><a href="aboutUs.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--顶部第二行-->
+				<div class="top_middle">
+					<div class="top_middle_left">
+						<img src="img/12574772601.jpg" />
+					</div>
+					<div class="top_middle_right">
+						<ul>
+							<li><a href="index.html">首页</a></li>
+							<li><a href="car.html">我的餐车</a></li>
+							<li><a href="order.html">我的订单</a></li>
+							<li><a href="peisong.html">配送说明</a></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--顶部第三行-->
+				<div class="top_bottom">
+					<hr color="#ff4500" size="7" />
+				</div>
+			</div>
+			<!--中部-->
+			<div class="middle">
+				<div class="middle_center">
+					
+						<table width="570px" bordercolor="orange"  border="1" cellpadding="0" cellspacing="0">
+							<form id="id_register">
+							<tr align="center">
+								<th colspan="3">请填写用户信息（带*为必填项）</th>
+							</tr>
+							<tr align="center">
+								<td>用户名：</td>
+								<td><input id="account" type="text" name="username" /> </td>
+								<td>*您用来登录的用户名</td>
+							</tr>
+							<tr align="center">
+								<td>密码：</td>
+								<td><input id="pwd" type="password" name="password" /></td>
+								<td>*长度必须大于5小于16个字符，只能是字母和数字</td>
+							</tr>
+							<tr align="center">
+								<td>确认密码：</td>
+								<td><input id="r_pwd" type="password" name="r_password" /></td>
+								<td>*请将输入的密码再次输入</td>
+							</tr>
+							<tr align="center">
+								<td>真实姓名：</td>
+								<td><input type="text" name="realname" /></td>
+								<td>*填写您的真实姓名</td>
+							</tr>
+							<tr align="center">
+								<td>性别：</td>
+								<td>男：<input type="radio" name="sex" value="男" />女：<input value="女" type="radio" name="sex" /> </td>
+								<td>*请填写您的真实信息</td>
+							</tr>
+							<tr align="center">
+								<td>身份证号：</td>
+								<td><input type="text" name="idcard" /> </td>
+								<td>*请填写您的真实信息</td>
+							</tr>
+							<tr align="center">
+								<td>电话号码：</td>
+								<td><input type="text" name="tel" /> </td>
+								<td>*请填写您的真实信息</td>
+							</tr>
+							<tr align="center">
+								<td>配送地址：</td>
+								<td><input type="text" name="address" /> </td>
+								<td>*请填写您的真实信息</td>
+							</tr>
+							</form>
+							<tr align="center">
+								<td colspan="3"><button id="btn1"><img src="img/canche_submit.gif" /></button></td>
+							</tr>
+						</table>
+					
+				</div>
+				
+			</div>
+			<!--底部-->
+			<div class="bottom">
+				<hr size="7" color="orange"/>
+				<a href="aboutUs.html">关于我们</a>|<a href="peisong.html">配送说明</a>
+				<br />
+				Copyright&copy2019-2028
+			</div>
+		</div>
+	</body>
+	<script>
+		//校验是否为空
+		function checkNull(data){
+			if(data == ""){
+				return false;
+			}else{
+				return true;
+			}
+		}
+		//校验字符串是否包含空格
+		function checkSpace(data){
+			if(data.indexOf(" ") == -1){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		//校验字符串长度必须大于5小于16个字符，只能是字母和数字
+		function checkReg(data){
+			var reg = new RegExp("^[A-z0-9]{6,15}$");
+			var result = reg.test(data);
+			return result;
+		}
+		//校验用户名
+		$("#account").blur(function(){
+			var account = $("#account").val();
+			if(!checkNull(account)){
+				alert("用户名不能为空")
+			}else if(!checkSpace(account)){
+				alert("用户名不能包含空格")
+			}else if(!checkReg(account)){
+				alert("用户名不符合规则")
+			}
+		});
+		//校验密码
+		$("#pwd").blur(function(){
+			var password = $("#pwd").val();
+			if(!checkNull(password)){
+				alert("密码不能为空")
+			}else if(!checkSpace(password)){
+				alert("密码不能包含空格")
+			}else if(!checkReg(password)){
+				alert("密码不符合规则")
+			}
+		});
+		
+		//确认密码
+		$("#r_pwd").blur(function(){
+			var password = $("#pwd").val();
+			var r_password = $("#r_pwd").val();
+			if(password != r_password){
+				alert("两次密码输入不一致")
+			}
+		});
+		
+		$("#btn1").click(function(){
+			var ff_register = $("#id_register").serialize();
+			$.ajax({
+				url:"http://api.bajin.com/user/register",
+				type:"get",
+				data:ff_register,
+				xhrFields: {withCredentials: true},
+				crossDomain: true,
+				success:function(data){
+					if(data.status == 2){
+						alert("用户名已存在");
+					}else if(data.status == 1){
+						alert("注册失败");
+					}else if(data.status == 0){
+						window.location.href = "login.html";
+					}
+				},
+				error:function(){
+					
+				},
+				dataType:"json"
+			});
+		});
+	</script>
+	
+	<script type="text/javascript" src="js/public_top_user.js" ></script>
+
+
+</html>

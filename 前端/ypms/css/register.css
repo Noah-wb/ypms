@@ -1,0 +1,12 @@
+			.middle{
+				width: 930px;
+				height: 300px;
+				/*border: 1px red solid;*/
+				padding-top: 70px;
+			}
+			.middle_center{
+				margin: auto;
+				width: 570px;
+				/*border: 1px red solid;*/
+				font-size: 14px;
+			}

@@ -1,0 +1,15 @@
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			.parent{
+				width: 930px;
+				/*height: 700px;*/
+				/*border: 1px red solid;*/
+				margin: auto;/*水平居中*/
+			}
+
+			/*清除浮动 */
+			.clear{
+				clear: both;
+			}

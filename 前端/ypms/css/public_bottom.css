@@ -1,0 +1,17 @@
+			/*底部*/
+			.bottom{
+				text-align: center;
+				margin-top: 10px;
+				font-size: 14px;
+			}
+			.bottom a{
+				color: black;
+				text-decoration: none;
+			}
+			.bottom a:hover{
+				color: orange;
+			}
+			.bottom_bottom{
+				height: 5px;
+				background-color: #ff4500;
+			}

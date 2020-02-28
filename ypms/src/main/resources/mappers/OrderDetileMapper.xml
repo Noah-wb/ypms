@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bajin.dao.OrderDetileMapper" >
+  <resultMap id="BaseResultMap" type="com.bajin.pojo.OrderDetile" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orderno" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="dishid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ordernum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderno, dishid, ordernum, createtime, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_detile
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_detile
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bajin.pojo.OrderDetile" >
+    insert into order_detile (id, orderno, dishid, 
+      ordernum, createtime, updatetime
+      )
+    values (#{id,jdbcType=INTEGER}, #{orderno,jdbcType=BIGINT}, #{dishid,jdbcType=INTEGER}, 
+      #{ordernum,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bajin.pojo.OrderDetile" >
+    insert into order_detile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderno != null" >
+        orderno,
+      </if>
+      <if test="dishid != null" >
+        dishid,
+      </if>
+      <if test="ordernum != null" >
+        ordernum,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null" >
+        #{orderno,jdbcType=BIGINT},
+      </if>
+      <if test="dishid != null" >
+        #{dishid,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bajin.pojo.OrderDetile" >
+    update order_detile
+    <set >
+      <if test="orderno != null" >
+        orderno = #{orderno,jdbcType=BIGINT},
+      </if>
+      <if test="dishid != null" >
+        dishid = #{dishid,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null" >
+        ordernum = #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bajin.pojo.OrderDetile" >
+    update order_detile
+    set orderno = #{orderno,jdbcType=BIGINT},
+      dishid = #{dishid,jdbcType=INTEGER},
+      ordernum = #{ordernum,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="insetOrderDetaile" parameterType="com.bajin.pojo.OrderDetile">
+    insert into order_detile(orderno,dishid,ordernum,createtime)
+    VALUES
+    <foreach collection="list" item="orderItem" separator=",">
+      (#{orderItem.orderno},#{orderItem.dishid},#{orderItem.ordernum},now())
+    </foreach>
+  </insert>
+
+  <select id="getByOrderNo" parameterType="long" resultType="com.bajin.bo.OrderDetailBO">
+    select
+    order_detile.id as id,
+    dishname,
+    price,
+    ordernum
+    from order_detile,dishinfo where order_detile.dishid = dishinfo.id and orderno = #{id}
+  </select>
+
+</mapper>

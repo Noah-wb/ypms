@@ -1,0 +1,8 @@
+1. nginx
+2. natapp
+3. IDE
+4. HBuilder
+
+5.通过域名访问
+	前端域名：http://mall.bajin.com
+	后端域名：http://api.bajin.com

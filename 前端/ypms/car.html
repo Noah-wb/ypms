@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/all.css" />
+		<link rel="stylesheet" href="css/public_top.css" />
+		<link rel="stylesheet" href="css/public_bottom.css" />
+		<link rel="stylesheet" href="js/layui/css/layui.css" />
+		<style>
+			.middle{
+				width: 850px;
+				/*height: 330px;*/
+				/*border: 1px red solid;*/
+				padding: 70px 0px 20px 0px;
+			}
+			.middle_center{
+				width: 552px;
+				margin: auto;
+			}
+			button{
+				border-color: white;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="parent">
+			<!--顶部-->
+			<div class="top">
+				<!--顶部第一行-->
+				<div class="top_up">
+					<div class="top_up_right">
+						<ul>
+							<li id="id_login_btn"><a href="login.html">会员登录</a></li>
+							<li id="id_register_btn"><a href="register.html">会员注册</a></li>
+							<li id="id_loginout_btn"><a id="loginOut"  href="javascript:void(0)">注销登录</a></li>
+							<li><a href="aboutUs.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--顶部第二行-->
+				<div class="top_middle">
+					<div class="top_middle_left">
+						<img src="img/12574772601.jpg" />
+					</div>
+					<div class="top_middle_right">
+						<ul>
+							<li><a href="index.html">首页</a></li>
+							<li style="background-image: url(img/menu_hover.jpg);"><a href="car.html">我的餐车</a></li>
+							<li><a href="order.html">我的订单</a></li>
+							<li><a href="peisong.html">配送说明</a></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--顶部第三行-->
+				<div class="top_bottom">
+					<hr color="#ff4500" size="7" />
+				</div>
+			</div>
+			<!--中部-->
+			<div class="middle">
+				<div style="text-align: center;" class="middle_center">
+					<h3 style="color: orangered;">餐车查询结果信息列表</h3>
+					<table id="idTest" class="layui-table" lay-data="{height: '280',width: '650', cellMinWidth: 60, url:'http://api.bajin.com/car/selectCar'}">
+					  <thead>
+					    <tr>
+					      <th lay-data="{field:'id', width:100,hide:true,align:'center'}">ID</th>
+					      <th lay-data="{field:'dishname', width:215,align:'center'}">名称</th>
+					      <th lay-data="{field:'price', width:215,align:'center'}">单价</th>
+					      <th lay-data="{field:'carnum', width:215,align:'center'}">数量</th>
+					    </tr>
+					  </thead>
+					</table>
+					<button id="id_submit"><img src="img/canche_submit.gif" />  </button>
+					<button id="id_quxiao"><img src="img/quxiao2.gif" /></button>
+								
+				</div>
+			</div>
+			<!--底部-->
+			<div style="height: 5px;background-color: orangered;" class="bottom">
+				<a href="aboutUs.html">关于我们</a>|<a href="peisong.html">配送说明</a>
+				<br />
+				Copyright&copy2019-2028
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+	<script type="text/javascript" src="js/public_top_user.js" ></script>
+	<script>
+		$.ajax({
+			url:"http://api.bajin.com/user/getUserinfo",
+			type:"get",
+			xhrFields: {withCredentials: true},
+			crossDomain: true,
+			success:function(data){
+				if(data.status == 0){//获取用户信息成功
+
+				}else{//获取用户信息失败
+					window.location.href = "no_login.html";
+				}
+			},
+			error:function(){
+				
+			},
+			dataType:"json"
+		});
+		
+		
+		$("#id_quxiao").click(function(){
+			$.ajax({
+				url:"http://api.bajin.com/car/cancleAll",
+				type:"get",
+				xhrFields: {withCredentials: true},
+				crossDomain: true,
+				success:function(data){
+					if(data.status == 3){
+						window.location.href = "login.html";
+					}else{
+						//数据表格重新载入
+						var table = layui.table;
+						table.reload('idTest', {});
+					}
+				},
+				error:function(){
+					
+				},
+				dataType:"json"
+			});
+			
+		});
+		
+		$("#id_submit").click(function(){
+			$.ajax({
+				url:"http://api.bajin.com/order/createOrder",
+				type:"get",
+				xhrFields: {withCredentials: true},
+				crossDomain: true,
+				success:function(data){
+					window.location.href = "pay.html?orderNo="+data.data;
+				},
+				error:function(){
+					
+				},
+				dataType:"json"
+			});
+		});
+	</script>
+</html>

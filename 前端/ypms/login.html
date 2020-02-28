@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/all.css" />
+		<link rel="stylesheet" href="css/public_top.css" />
+		<link rel="stylesheet" href="css/public_bottom.css" />
+		<link rel="stylesheet" href="css/login.css" />
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+	</head>
+	<body>
+		<div class="parent">
+			<!--顶部-->
+			<div class="top">
+				<!--顶部第一行-->
+				<div class="top_up">
+					<div class="top_up_right">
+						<ul>
+							<li id="id_login_btn"><a href="login.html">会员登录</a></li>
+							<li id="id_register_btn"><a href="register.html">会员注册</a></li>
+							<li id="id_loginout_btn"><a id="loginOut"  href="javascript:void(0)">注销登录</a></li>
+							<li><a href="aboutUs.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--顶部第二行-->
+				<div class="top_middle">
+					<div class="top_middle_left">
+						<img src="img/12574772601.jpg" />
+					</div>
+					<div class="top_middle_right">
+						<ul>
+							<li><a href="index.html">首页</a></li>
+							<li><a href="car.html">我的餐车</a></li>
+							<li><a href="order.html">我的订单</a></li>
+							<li><a href="peisong.html">配送说明</a></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--顶部第三行-->
+				<div class="top_bottom">
+					<hr color="#ff4500" size="7" />
+				</div>
+			</div>
+			<!--中部-->
+			<div class="middle">
+				<div class="middle_center">
+					<div class="middle_center_left">
+						<form id="id_form_login" action="" method="get">
+							<div class="middle_center_left_account">账号：<input type="text" name="username" /> </div>
+							<div class="middle_center_left_pwd">密码：<input type="password" name="password" /> </div>
+							<div class="middle_center_left_btn">
+								<div class="middle_center_left_left">
+									<a id="btn_login" href="javascript:void(0)"><img src="img/denglu.gif" /></a>
+								</div>
+								<div class="middle_center_left_right">
+									<img src="img/zhuce.gif" />
+								</div>
+								<div class="clear"></div>
+							</div>
+						</form>
+					</div>
+					<div class="middle_center_right">
+						<ul>
+							<li>如果您已是会员，请在左侧登录</li>
+							<li>如果您还没有注册会员，<a href="#" class="login_register">点这里注册会员</a></li>
+							<li>如果您忘记密码，<a href="#" class="login_rest_pwd">点这里重设一个密码</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--底部-->
+			<div class="bottom">
+				<hr size="7" color="orange"/>
+				<a href="aboutUs.html">关于我们</a>|<a href="peisong.html">配送说明</a>
+				<br />
+				Copyright&copy2019-2028
+			</div>
+		</div>
+	</body>
+	<script>
+		$("#btn_login").click(function(){
+			var ff_data = $("#id_form_login").serialize();
+			$.ajax({
+				url:"http://api.bajin.com/user/login",
+				type:"get",
+				data:ff_data,
+				xhrFields: {withCredentials: true},
+				crossDomain: true,
+				success:function(data){
+					if(data.status == 0){
+						window.location.href = "index.html";
+					}else{
+						alert("用户名或密码错误");
+					}
+				},
+				error:function(){
+					
+				},
+				dataType:"json"
+			});
+		});
+		
+	</script>
+	<script type="text/javascript" src="js/public_top_user.js" ></script>
+</html>

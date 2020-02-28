@@ -1,0 +1,66 @@
+			button{
+				border-color: white;
+			}
+			/*顶部*/
+			/*顶部第一行*/
+			.top_up_right{
+				background-image: url(../img/topmenu_bg.jpg);
+				background-repeat: no-repeat;/*设置背景图片不平铺*/
+				width: 395px;
+				height: 25px;
+				text-align: center;/*让div里面的内容剧中*/
+				float: right;/*div右浮动*/
+				margin-right: 10px;
+			}
+			/*去掉无序列表左边的小圆点*/
+			.top_up_right ul li{
+				list-style: none;
+			}
+			/*设置无序列表行级显示*/
+			.top_up_right ul li{
+				display: inline;/*行级显示*/
+			}
+			.top_up_right a{
+				text-decoration: none;/*去掉超链接的下划线*/
+				color: gray;
+			}
+			.top_up_right a:hover{/*设定超链接的悬浮效果*/
+				color: orange;
+			}
+			/*顶部第二行*/
+			.top_middle_left{
+				float: left;
+			}
+			.top_middle_right{
+				float: right;
+				margin-top: 50px;
+				text-align: center;
+				margin-right: 20px;
+			}
+			
+			.top_middle_right ul li{
+				/*去除无序列表左边的样式*/
+				list-style: none;
+				/*无序列表行级显示*/
+				display: inline;
+				/*设定无序列表项的背景图片*/
+				background-image: url(../img/menu.jpg);
+				width: 87px;
+				display: inline-block;/*设定无序列表显示方式为行级块*/
+				line-height: 41px;/*让列表项里面的内容垂直居中*/
+			}
+			.top_middle_right ul li a{
+				/*去掉超链接的下划线*/
+				text-decoration: none;
+				/*设定超链接的颜色为白色*/
+				color: white;
+			}
+			
+			/*设定列表项的悬浮状态*/
+			.top_middle_right ul li:hover{
+				background-image: url(../img/menu_hover.jpg);
+			}
+			.top_bottom{
+				height: 5px;
+				background-color: #ff4500;
+			}

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bajin.dao.DishinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.bajin.pojo.Dishinfo" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="dishname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="price" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="dishdes" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dishimg" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dishnum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="dishtype" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, dishname, price, dishdes, dishimg, dishnum, dishtype, createtime, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dishinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dishinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bajin.pojo.Dishinfo" >
+    insert into dishinfo (id, dishname, price, 
+      dishdes, dishimg, dishnum, 
+      dishtype, createtime, updatetime
+      )
+    values (#{id,jdbcType=INTEGER}, #{dishname,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{dishdes,jdbcType=VARCHAR}, #{dishimg,jdbcType=VARCHAR}, #{dishnum,jdbcType=INTEGER}, 
+      #{dishtype,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bajin.pojo.Dishinfo" >
+    insert into dishinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dishname != null" >
+        dishname,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="dishdes != null" >
+        dishdes,
+      </if>
+      <if test="dishimg != null" >
+        dishimg,
+      </if>
+      <if test="dishnum != null" >
+        dishnum,
+      </if>
+      <if test="dishtype != null" >
+        dishtype,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dishname != null" >
+        #{dishname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="dishdes != null" >
+        #{dishdes,jdbcType=VARCHAR},
+      </if>
+      <if test="dishimg != null" >
+        #{dishimg,jdbcType=VARCHAR},
+      </if>
+      <if test="dishnum != null" >
+        #{dishnum,jdbcType=INTEGER},
+      </if>
+      <if test="dishtype != null" >
+        #{dishtype,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bajin.pojo.Dishinfo" >
+    update dishinfo
+    <set >
+      <if test="dishname != null" >
+        dishname = #{dishname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="dishdes != null" >
+        dishdes = #{dishdes,jdbcType=VARCHAR},
+      </if>
+      <if test="dishimg != null" >
+        dishimg = #{dishimg,jdbcType=VARCHAR},
+      </if>
+      <if test="dishnum != null" >
+        dishnum = #{dishnum,jdbcType=INTEGER},
+      </if>
+      <if test="dishtype != null" >
+        dishtype = #{dishtype,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bajin.pojo.Dishinfo" >
+    update dishinfo
+    set dishname = #{dishname,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      dishdes = #{dishdes,jdbcType=VARCHAR},
+      dishimg = #{dishimg,jdbcType=VARCHAR},
+      dishnum = #{dishnum,jdbcType=INTEGER},
+      dishtype = #{dishtype,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--查询首页菜品信息-->
+  <select id="getDishinfoList" resultType="com.bajin.vo.DishinfoVO">
+    select
+    dishinfo.id as id,
+    dishname,
+    price,
+    dishdes,
+    dishimg,
+    typename
+    from dishinfo,dishtype where dishinfo.dishtype = dishtype.id
+  </select>
+
+</mapper>
